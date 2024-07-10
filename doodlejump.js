@@ -47,9 +47,18 @@ window.onload = function() {
 
 function update() {
     requestAnimationFrame(update);
+    context.clearRect(0, 0, board.width, board.height);
 
     // draw doodler over and over again
     doodler.x += velocityX;
+
+    if (doodler.x > boardWidth) {
+        doodler.x = 0;
+    }
+    else if (doodler.x + doodler.width < 0) {
+        doodler.x = boardWidth;
+    }
+
     context.drawImage(doodler.img, doodler.x, doodler.y, doodler.width, doodler.height);
 }
 
